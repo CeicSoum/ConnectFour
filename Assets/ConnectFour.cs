@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ConnectFour : MonoBehaviour {
  int playerTurn = 0, countOne = 1, countTwo = 1, countThree = 1, countFour = 1, countFive = 1, countSix = 1, countSeven = 1;
+ bool wins = false;
  public Text playerText;
  public Button btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven;
  public Image oneOne, oneTwo, oneThree, oneFour, oneFive, oneSix;
@@ -15,12 +17,12 @@ public class ConnectFour : MonoBehaviour {
  public Image fiveOne, fiveTwo, fiveThree, fiveFour, fiveFive, fiveSix;
  public Image sixOne, sixTwo, sixThree, sixFour, sixFive, sixSix;
  public Image sevenOne, sevenTwo, sevenThree, sevenFour, sevenFive, sevenSix;
- public Sprite invisible, chipRed, chipYellow;
- string[,] connect = new string[6, 7];
- Color blueText = new Color(0, 252, 50);
- 
+ public Sprite chipRed, chipYellow;
+ string[,] connect = new string[7, 8];
+
  public void Btn(int num) {
         Button one = btnOne.GetComponent<Button>(), two = btnTwo.GetComponent<Button>(), three = btnThree.GetComponent<Button>(), four = btnFour.GetComponent<Button>(), five = btnFive.GetComponent<Button>(), six = btnSix.GetComponent<Button>(), seven = btnSeven.GetComponent<Button>();
+        
         if (playerTurn % 2 == 0) {
 
             switch (num) {
@@ -57,6 +59,7 @@ public class ConnectFour : MonoBehaviour {
              one.enabled = false;
             }
 
+            WinsCheck();
             countOne++;
             break;
 
@@ -93,6 +96,7 @@ public class ConnectFour : MonoBehaviour {
              two.enabled = false;
             }
 
+            WinsCheck();
             countTwo++;
             break;
 
@@ -129,6 +133,7 @@ public class ConnectFour : MonoBehaviour {
              three.enabled = false;
             }
 
+            WinsCheck();
             countThree++;
             break;
 
@@ -164,7 +169,8 @@ public class ConnectFour : MonoBehaviour {
              connect[5, 3] = "red";
              four.enabled = false;
             }
-
+            
+            WinsCheck();
             countFour++;
             break;
 
@@ -201,6 +207,7 @@ public class ConnectFour : MonoBehaviour {
              five.enabled = false;
             }
 
+            WinsCheck();
             countFive++;
             break;
 
@@ -237,10 +244,11 @@ public class ConnectFour : MonoBehaviour {
              six.enabled = false;
             }
 
+            WinsCheck();
             countSix++;
             break;
 
-            default:
+            case 7:
 
             if (countSeven == 1) {
              sevenOne.sprite = chipRed;
@@ -273,13 +281,16 @@ public class ConnectFour : MonoBehaviour {
              seven.enabled = false;
             }
 
+            WinsCheck();
             countSeven++;
             break;           
             }
 
             playerTurn++;
-            playerText.GetComponent<Text>().color = blueText;
+            if ( wins == false) {
+            playerText.GetComponent<Text>().color = Color.yellow;
             playerText.text = "Player 2 turn";
+            }
         }
 
         else if (playerTurn % 2 == 1) {
@@ -318,6 +329,7 @@ public class ConnectFour : MonoBehaviour {
              one.enabled = false;
             }
 
+            WinsCheck();
             countOne++;
             break;
 
@@ -354,6 +366,7 @@ public class ConnectFour : MonoBehaviour {
              two.enabled = false;
             }
 
+            WinsCheck();
             countTwo++;
             break;
 
@@ -390,6 +403,7 @@ public class ConnectFour : MonoBehaviour {
              three.enabled = false;
             }
 
+            WinsCheck();
             countThree++;
             break;
 
@@ -426,6 +440,7 @@ public class ConnectFour : MonoBehaviour {
              four.enabled = false;
             }
 
+            WinsCheck();
             countFour++;
             break;
 
@@ -462,6 +477,7 @@ public class ConnectFour : MonoBehaviour {
              five.enabled = false;
             }
 
+            WinsCheck();
             countFive++;
             break;
 
@@ -498,10 +514,11 @@ public class ConnectFour : MonoBehaviour {
              six.enabled = false;
             }
 
+            WinsCheck();
             countSix++;
             break;
 
-            default:
+            case 7:
 
             if (countSeven == 1) {
              sevenOne.sprite = chipYellow;
@@ -534,14 +551,125 @@ public class ConnectFour : MonoBehaviour {
              seven.enabled = false;
             }
 
+            WinsCheck();
             countSeven++;
             break;           
             }
 
             playerTurn++;
+            if (wins == false) {
             playerText.GetComponent<Text>().color = Color.red;
             playerText.text = "Player 1 turn";
+            }
         }
     }
 
+    public void WinsCheck() {
+
+        //Vertical Check
+        for (int v = 0; v < 7; v++) {
+
+            for (int h = 0; h < 6; h++) {
+             
+             if (connect[h, v] == "red" && connect[h + 1, v] == "red" && connect[h + 2, v] == "red" && connect[h + 3, v] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+            }
+
+            else if (connect[h, v] == "yellow" && connect[h + 1, v] == "yellow" && connect[h + 2, v] == "yellow" && connect[h + 3, v] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+            }
+        }
+
+        //Horizontal Check
+        for (int h = 0; h < 6; h++) {
+
+            for (int v = 0; v < 7; v++) {
+             if (connect[h, v] == "red" && connect[h, v + 1] == "red" && connect[h, v + 2] == "red" && connect[h , v + 3] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+            }
+
+            else if (connect[h, v] == "yellow" && connect[h , v + 1] == "yellow" && connect[h, v + 2] == "yellow" && connect[h , v + 3] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+            }
+        }
+       
+        //Diagonal Check
+        for (int h = 6; h > -1; h--) {
+
+            for (int v = 0; v < 7; v++) {
+             
+             if (h > 3 && v < 4) {
+
+             if (connect[h, v] == "red" && connect[h - 1, v - 1] == "red" && connect[h - 2, v - 2] == "red" && connect[h - 3, v - 3] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+            }
+
+             else if (connect[h, v] == "yellow" && connect[h - 1, v - 1] == "yellow" && connect[h - 2, v - 2] == "yellow" && connect[h - 3, v - 3] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             }
+
+            }
+        } 
+
+        //Diagonal Check
+        for (int h = 0; h < 6; h++) {
+
+            for (int v = 0; v < 7; v++) {
+
+             if (connect[h, v] == "red" && connect[h + 1, v + 1] == "red" && connect[h + 2, v + 2] == "red" && connect[h + 3, v + 3] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+            }
+
+             else if (connect[h, v] == "yellow" && connect[h + 1, v + 1] == "yellow" && connect[h + 2, v + 2] == "yellow" && connect[h + 3 , v + 3] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+            }
+        }
+
+    } 
+
+    public void BtnDisabled() {
+    Button one = btnOne.GetComponent<Button>(), two = btnTwo.GetComponent<Button>(), three = btnThree.GetComponent<Button>(), four = btnFour.GetComponent<Button>(), five = btnFive.GetComponent<Button>(), six = btnSix.GetComponent<Button>(), seven = btnSeven.GetComponent<Button>();
+    one.enabled = false;
+    two.enabled = false;
+    three.enabled = false;
+    four.enabled = false;
+    five.enabled = false;
+    six.enabled = false;
+    seven.enabled = false;
+    }
+
+    public void Restart() {
+     string currentName = SceneManager.GetActiveScene().name;
+     SceneManager.LoadScene(currentName);
+    }
 }
