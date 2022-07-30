@@ -286,6 +286,12 @@ public class ConnectFour : MonoBehaviour {
             break;           
             }
 
+            if (countOne == 6 && countTwo == 6 && countThree == 6 && countFour == 6 && countFive == 6 && countSix == 6 && countSeven == 6) {
+            playerText.GetComponent<Text>().color = Color.blue;
+            playerText.text = "Tie!";
+            wins = true;
+            }
+
             playerTurn++;
             if ( wins == false) {
             playerText.GetComponent<Text>().color = Color.yellow;
@@ -554,6 +560,12 @@ public class ConnectFour : MonoBehaviour {
             WinsCheck();
             countSeven++;
             break;           
+            }
+
+            if (countOne == 6 && countTwo == 6 && countThree == 6 && countFour == 6 && countFive == 6 && countSix == 6 && countSeven == 6) {
+            playerText.GetComponent<Text>().color = Color.blue;
+            playerText.text = "Tie!";
+            wins = true;
             }
 
             playerTurn++;
