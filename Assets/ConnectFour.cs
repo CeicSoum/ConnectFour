@@ -620,31 +620,177 @@ public class ConnectFour : MonoBehaviour {
             }
         }
        
-        //Diagonal Check
-        for (int h = 6; h > -1; h--) {
-
-            for (int v = 0; v < 7; v++) {
-             
-             if (h > 3 && v < 4) {
-
-             if (connect[h, v] == "red" && connect[h - 1, v - 1] == "red" && connect[h - 2, v - 2] == "red" && connect[h - 3, v - 3] == "red") {
+             //Diagonal Check
+             if (connect[0, 3] == "red" && connect[1, 2] == "red" && connect[2, 1] == "red" && connect[3, 0] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
              playerText.text = "Player 1 wins";
              wins = true;
              BtnDisabled();
-            }
+             }
 
-             else if (connect[h, v] == "yellow" && connect[h - 1, v - 1] == "yellow" && connect[h - 2, v - 2] == "yellow" && connect[h - 3, v - 3] == "yellow") {
+             else if (connect[0, 3] == "yellow" && connect[1, 2] == "yellow" && connect[2, 1] == "yellow" && connect[3, 0] == "yellow") {
              playerText.GetComponent<Text>().color = Color.yellow;
              playerText.text = "Player 2 wins";
              wins = true;
              BtnDisabled();
              }
 
+             else if (connect[0, 4] == "red" && connect[1, 3] == "red" && connect[2, 2] == "red" && connect[3, 1] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
              }
 
-            }
-        } 
+             else if (connect[1, 3] == "red" && connect[2, 2] == "red" && connect[3, 1] == "red" && connect[4, 0] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[0, 4] == "yellow" && connect[1, 3] == "yellow" && connect[2, 2] == "yellow" && connect[3, 1] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[1, 3] == "yellow" && connect[2, 2] == "yellow" && connect[3, 1] == "yellow" && connect[4, 0] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[0, 5] == "red" && connect[1, 4] == "red" && connect[2, 3] == "red" && connect[3, 2] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[1, 4] == "red" && connect[2, 3] == "red" && connect[3, 2] == "red" && connect[4, 1] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[2, 3] == "red" && connect[3, 2] == "red" && connect[4, 1] == "red" && connect[5, 0] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+
+             else if (connect[0, 5] == "yellow" && connect[1, 4] == "yellow" && connect[2, 3] == "yellow" && connect[3, 2] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[1, 4] == "yellow" && connect[2, 3] == "yellow" && connect[3, 2] == "yellow" && connect[4, 1] == "yellow") {
+            playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[2, 3] == "yellow" && connect[3, 2] == "yellow" && connect[4, 1] == "yellow" && connect[5, 0] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[1, 5] == "red" && connect[2, 4] == "red" && connect[3, 3] == "red" && connect[4, 2] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[2, 4] == "red" && connect[3, 3] == "red" && connect[4, 2] == "red" && connect[5, 1] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 3] == "red" && connect[4, 2] == "red" && connect[5, 1] == "red" && connect[6, 0] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+
+             else if (connect[1, 5] == "yellow" && connect[2, 4] == "yellow" && connect[3, 3] == "yellow" && connect[4, 2] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[2, 4] == "yellow" && connect[3, 3] == "yellow" && connect[4, 2] == "yellow" && connect[5, 1] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 3] == "yellow" && connect[4, 2] == "yellow" && connect[5, 1] == "yellow" && connect[6, 0] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+
+             else if (connect[2, 5] == "red" && connect[3, 4] == "red" && connect[4, 3] == "red" && connect[5, 2] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 4] == "red" && connect[4, 3] == "red" && connect[5, 2] == "red" && connect[6, 1] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[2, 5] == "yellow" && connect[3, 4] == "yellow" && connect[4, 3] == "yellow" && connect[5, 2] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 4] == "yellow" && connect[4, 3] == "yellow" && connect[5, 2] == "yellow" && connect[6, 1] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 5] == "red" && connect[4, 4] == "red" && connect[5, 3] == "red" && connect[6, 2] == "red") {
+             playerText.GetComponent<Text>().color = Color.red;
+             playerText.text = "Player 1 wins";
+             wins = true;
+             BtnDisabled();
+             }
+
+             else if (connect[3, 5] == "yellow" && connect[4, 4] == "yellow" && connect[5, 3] == "yellow" && connect[6, 2] == "yellow") {
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
+             BtnDisabled();
+             }
 
         //Diagonal Check
         for (int h = 0; h < 6; h++) {
