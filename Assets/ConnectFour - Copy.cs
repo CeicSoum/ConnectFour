@@ -20,7 +20,7 @@ public class ConnectFour : MonoBehaviour {
  public Sprite chipRed, chipYellow;
  string[,] connect = new string[7, 8];
 
-    public void Btn(int num) {
+ public void Btn(int num) {
         Button one = btnOne.GetComponent<Button>(), two = btnTwo.GetComponent<Button>(), three = btnThree.GetComponent<Button>(), four = btnFour.GetComponent<Button>(), five = btnFive.GetComponent<Button>(), six = btnSix.GetComponent<Button>(), seven = btnSeven.GetComponent<Button>();
         
         if (playerTurn % 2 == 0) {
@@ -294,62 +294,12 @@ public class ConnectFour : MonoBehaviour {
 
             playerTurn++;
             if ( wins == false) {
-            playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer turn";
+            playerText.GetComponent<Text>().color = Color.yellow;
+            playerText.text = "Player 2 turn";
             }
         }
 
-         if (playerTurn % 2 == 1) {
-            System.Random rnd = new System.Random();
-            num = rnd.Next(0, 8);
-            bool valid = false;
-
-            while (valid == false) {
-
-                if (countSeven > 5 && num == 7) {
-                    valid = false;
-                }
-
-                else if (countSix > 5 && num == 6) {
-                    valid = false;
-                }
-
-                else if (countFive > 5 && num == 5) {
-                    valid = false;
-                }
-
-                else if (countFour > 5 && num == 4) {
-                    valid = false;
-                }
-
-                else if (countThree > 5 && num == 3) {
-                    valid = false;
-                }
-
-                else if (countTwo > 5 && num == 2) {
-                    valid = false;
-                }
-
-                else if (countOne > 5 && num == 1) {
-                    valid = false;
-                }
-
-                else if (countOne == 6 && countTwo == 6 && countThree == 6 && countFour == 6 && countFive == 6 && countSix == 6 && countSeven == 6) {
-                    playerText.GetComponent<Text>().color = Color.blue;
-                    playerText.text = "Tie!";
-                    wins = true;
-                    valid = true;
-                }
-
-                else {
-                    valid = true;
-                }
-
-                num = rnd.Next(0, 8);
-            }
-        } 
-
-        if (playerTurn % 2 == 1) {
+        else if (playerTurn % 2 == 1) {
 
             switch (num) {
             case 1:
@@ -621,7 +571,7 @@ public class ConnectFour : MonoBehaviour {
             playerTurn++;
             if (wins == false) {
             playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player turn";
+            playerText.text = "Player 1 turn";
             }
         }
     }
@@ -635,15 +585,15 @@ public class ConnectFour : MonoBehaviour {
              
              if (connect[h, v] == "red" && connect[h + 1, v] == "red" && connect[h + 2, v] == "red" && connect[h + 3, v] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-                    playerText.text = "Player wins";
-                    wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
             }
 
             else if (connect[h, v] == "yellow" && connect[h + 1, v] == "yellow" && connect[h + 2, v] == "yellow" && connect[h + 3, v] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-                    playerText.text = "Computer wins";
-                    wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
@@ -656,15 +606,15 @@ public class ConnectFour : MonoBehaviour {
             for (int v = 0; v < 7; v++) {
              if (connect[h, v] == "red" && connect[h, v + 1] == "red" && connect[h, v + 2] == "red" && connect[h , v + 3] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-                    playerText.text = "Player wins";
-                    wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
             }
 
             else if (connect[h, v] == "yellow" && connect[h , v + 1] == "yellow" && connect[h, v + 2] == "yellow" && connect[h , v + 3] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-                    playerText.text = "Computer wins";
-                    wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
             }
@@ -673,172 +623,172 @@ public class ConnectFour : MonoBehaviour {
              //Diagonal Check
              if (connect[0, 3] == "red" && connect[1, 2] == "red" && connect[2, 1] == "red" && connect[3, 0] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[0, 3] == "yellow" && connect[1, 2] == "yellow" && connect[2, 1] == "yellow" && connect[3, 0] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[0, 4] == "red" && connect[1, 3] == "red" && connect[2, 2] == "red" && connect[3, 1] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[1, 3] == "red" && connect[2, 2] == "red" && connect[3, 1] == "red" && connect[4, 0] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[0, 4] == "yellow" && connect[1, 3] == "yellow" && connect[2, 2] == "yellow" && connect[3, 1] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[1, 3] == "yellow" && connect[2, 2] == "yellow" && connect[3, 1] == "yellow" && connect[4, 0] == "yellow") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[0, 5] == "red" && connect[1, 4] == "red" && connect[2, 3] == "red" && connect[3, 2] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[1, 4] == "red" && connect[2, 3] == "red" && connect[3, 2] == "red" && connect[4, 1] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[2, 3] == "red" && connect[3, 2] == "red" && connect[4, 1] == "red" && connect[5, 0] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
 
              else if (connect[0, 5] == "yellow" && connect[1, 4] == "yellow" && connect[2, 3] == "yellow" && connect[3, 2] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[1, 4] == "yellow" && connect[2, 3] == "yellow" && connect[3, 2] == "yellow" && connect[4, 1] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+            playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[2, 3] == "yellow" && connect[3, 2] == "yellow" && connect[4, 1] == "yellow" && connect[5, 0] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[1, 5] == "red" && connect[2, 4] == "red" && connect[3, 3] == "red" && connect[4, 2] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[2, 4] == "red" && connect[3, 3] == "red" && connect[4, 2] == "red" && connect[5, 1] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 3] == "red" && connect[4, 2] == "red" && connect[5, 1] == "red" && connect[6, 0] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
 
              else if (connect[1, 5] == "yellow" && connect[2, 4] == "yellow" && connect[3, 3] == "yellow" && connect[4, 2] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[2, 4] == "yellow" && connect[3, 3] == "yellow" && connect[4, 2] == "yellow" && connect[5, 1] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 3] == "yellow" && connect[4, 2] == "yellow" && connect[5, 1] == "yellow" && connect[6, 0] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
 
              else if (connect[2, 5] == "red" && connect[3, 4] == "red" && connect[4, 3] == "red" && connect[5, 2] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 4] == "red" && connect[4, 3] == "red" && connect[5, 2] == "red" && connect[6, 1] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[2, 5] == "yellow" && connect[3, 4] == "yellow" && connect[4, 3] == "yellow" && connect[5, 2] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 4] == "yellow" && connect[4, 3] == "yellow" && connect[5, 2] == "yellow" && connect[6, 1] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 5] == "red" && connect[4, 4] == "red" && connect[5, 3] == "red" && connect[6, 2] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-            playerText.text = "Player wins";
-            wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
              }
 
              else if (connect[3, 5] == "yellow" && connect[4, 4] == "yellow" && connect[5, 3] == "yellow" && connect[6, 2] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-            playerText.text = "Computer wins";
-            wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
 
@@ -849,15 +799,15 @@ public class ConnectFour : MonoBehaviour {
 
              if (connect[h, v] == "red" && connect[h + 1, v + 1] == "red" && connect[h + 2, v + 2] == "red" && connect[h + 3, v + 3] == "red") {
              playerText.GetComponent<Text>().color = Color.red;
-                    playerText.text = "Player wins";
-                    wins = true;
+             playerText.text = "Player 1 wins";
+             wins = true;
              BtnDisabled();
             }
 
              else if (connect[h, v] == "yellow" && connect[h + 1, v + 1] == "yellow" && connect[h + 2, v + 2] == "yellow" && connect[h + 3 , v + 3] == "yellow") {
-             playerText.GetComponent<Text>().color = Color.green;
-                    playerText.text = "Computer wins";
-                    wins = true;
+             playerText.GetComponent<Text>().color = Color.yellow;
+             playerText.text = "Player 2 wins";
+             wins = true;
              BtnDisabled();
              }
             }
@@ -879,5 +829,5 @@ public class ConnectFour : MonoBehaviour {
     public void Restart() {
      string currentName = SceneManager.GetActiveScene().name;
      SceneManager.LoadScene(currentName);
-}
+    }
 }
